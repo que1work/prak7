@@ -25,15 +25,8 @@ jobs:
           node app.js &
           sleep 5
 
-      - name: Install k6
-        run: |
-          sudo apt update
-          sudo apt install -y gnupg2 ca-certificates
-          sudo mkdir -p /etc/apt/keyrings
-          curl -fsSL https://packages.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null
-          echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
-          sudo apt update
-          sudo apt install -y k6
+      - name: Install k6 via snap
+        run: sudo snap install k6 --classic
 
       - name: Run k6 test
         run: k6 run performance-tests/test.js
