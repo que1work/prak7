@@ -2,7 +2,7 @@ name: k6 Performance Test
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
